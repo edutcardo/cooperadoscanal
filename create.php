@@ -1,0 +1,40 @@
+<?php
+include_once 'conexaocarros.php'; // Inclui a conexão corretamente
+
+// Verifica se a conexão está estabelecida
+if (!$conn) {
+    die("Erro: Conexão com o banco não foi estabelecida.");
+}
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $modelo = $_POST['modelo'] ?? '';
+    $placa = $_POST['placa'] ?? '';
+
+    // Validação simples para garantir que os campos não estão vazios
+    if (empty($modelo) || empty($placa)) {
+        echo "Por favor, preencha todos os campos.";
+        exit;
+    }
+
+    // SQL corrigido
+    $sql = "INSERT INTO controle (modelo, placa) VALUES (?, ?)";
+    $stmt = $conn->prepare($sql);
+
+    // Verifica se a preparação foi bem-sucedida
+    if (!$stmt) {
+        die("Erro na preparação do SQL: " . $conn->error);
+    }
+
+    // Vincula os parâmetros corretamente
+    $stmt->bind_param("ss", $modelo, $placa);
+
+    // Executa a consulta SQL
+    if ($stmt->execute()) {
+    } else {
+    }
+
+    // Fecha a declaração e a conexão
+    $stmt->close();
+    $conn->close();
+}
+?>

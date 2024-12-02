@@ -1,0 +1,20 @@
+<?php
+include 'conexao.php';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $id = $_POST['id'];
+    $descricao = $_POST['descricao'];
+    $valor = $_POST['valor'];
+    $data = $_POST['data'];
+
+    $sql = "UPDATE despesas SET descricao=?, valor=?, data=? WHERE id=?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sdsi", $descricao, $valor, $data, $id);
+
+    if ($stmt->execute()) {
+        echo "Despesa atualizada com sucesso!";
+    } else {
+        echo "Erro: " . $stmt->error;
+    }
+}
+?>
