@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
+    
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    
     <style>
         body {
             margin: 0;
@@ -19,7 +21,7 @@
         }
         .sidebar {
             width: 60px;
-            background-color: #006b3c;
+            background-color: 0 solid #e5e7eb;
             transition: width 0.3s;
             overflow: hidden;
             position: fixed; /* Torna a sidebar fixa */
@@ -55,7 +57,7 @@
         }
         .sidebar:hover a .text {
             display: inline-block; /* Exibe o texto quando a barra está em hover */ 
-            color: white; /* Cor branca */
+            color: #000000; /* Cor branca */
         }
         .sidebar:hover .span {
             text-decoration: none;
@@ -97,6 +99,15 @@
             padding: 20px;
             transition: margin-left 0.3s ease; /* Transição suave */
             margin-left: 60px;
+            display: flex;
+        }
+        .content1 {
+            width: 60%;
+        }
+        .content2 {
+            width: 40%;
+            padding-left: 16px;
+            align-items: right;
         }
         .card {
             background-color: #fff;
@@ -104,14 +115,8 @@
             padding: 20px;
             margin-bottom: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            
 
-        }
-        .card i {
-            padding-left: 10px;
+
         }
         .chart {
             height: 300px;
@@ -141,7 +146,7 @@
             width: calc(100% - 60px); /* Largura inicial, descontando a largura inicial da sidebar */
             height: 45px;
             background-color: #F5F5F5;
-            color: black;
+            color: rgb(64, 64, 64);
             justify-content: space-between;
             padding: 10px 20px;
             position: fixed;
@@ -155,7 +160,7 @@
 
         }
         .topbar a {
-            color: black;
+            color: rgb(64, 64, 64);
             padding: 15px 0px;
             text-decoration: none;
             text-align: center;
@@ -192,9 +197,32 @@
         .formcrud{
             margin-top: 30px;
         }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+
     </style>
 </head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <body>
     <div class="sidebar" id="sidebar">
         <div class="toggle-btn" onclick="toggleSidebar()">☰</div>
@@ -202,55 +230,221 @@
             <img src="logo.png" alt="Logo" class="logo"> 
         </div> 
         <a href="painel.html" class="home">
-            <i class="fa-solid fa-coins icon"></i> <span class="text">DRE</span>
+            <i class="fa-solid fa-coins"></i> <span class="text">Início</span>
         </a>
         <a href="reports.html">
-            <i class="fa-solid fa-solar-panel icon"></i><span class="text">Usinas</span>
+            <i class="fa-solid fa-solar-panel"></i><span class="text">Relatórios</span>
         </a>
         <a href="calendar.html">
-            <i class="fa-solid fa-gauge icon"></i> <span class="text">Dashboard</span>
+            <i class="fa-solid fa-gauge"></i> <span class="text">Gráficos</span>
         </a>
         <a href="help.html">
-            <i class="fa-solid fa-paste icon"></i><span class="text">Documentos</span>
+            <i class="fa-solid fa-paste"></i><span class="text">Perfil</span>
         </a>
     </div>
-    <div class="topbar">
-        <div><i class="fa-regular fa-lightbulb"></i>  Pedro Mascarenhas Bastos</div>
-        <div>
-            <a href="#uc"><i class="fa-regular fa-sun"></i> Usina: <select name="UC">
-                <option value="sim">UC: 41456511</option>
-                <option value="nao">UC: 11466522</option>
-            </select></a>
-            <a href="#about"><i class="fa-solid fa-chart-pie"></i> Percentual: 100%</a>
-            <a href="#contact"><i class="fa-solid fa-plug"></i> UC: 123456789</a>
-            <a href="#contact"><i class="fa-solid fa-leaf"></i> Cap. instalada: 75 kW</a>
-            <a href="#about"><i class="fa-solid fa-location-dot"></i> Localização: Maringá, PR</a>
-            <a href="#contact">Sair <i class="fa-solid fa-door-open"></i> </a>
+    <div class="content">
+        
+        <div class="content1">
+            <h4>Selecione o mês: <select name="UC">
+                <option value="sim">Jan/2023</option>
+                <option value="nao">Fev/2023</option>   
+                <option value="sim">Abr/2023</option>
+                <option value="nao">Mai/2023</option>
+                <option value="sim">Jun/2023</option>
+
+            </select></a></h4>
+            <h2><i class="fa-regular fa-chart-bar"></i> Geração</h2>
+            <div id="economiaChart" class="chart"></div>
+            <h2><i class="fa-regular fa-chart-bar"></i> Histórico de compensação</h2>
+            <div id="economiaChart3" class="chart"></div>
+
+            <h2><i class="fa-solid fa-chart-line"></i> Dividendos</h2>
+            <div id="economiaChart4" class="chart"></div>
+        </div>
+        <div class="content2">
+            <h4 class="ajuda"><button><i class="fa-solid fa-circle-info"></i> Ajuda</button></h4>
+            <h2><i class="fa-solid fa-chart-line"></i> Rentabilidade</h2>
+            <div id="economiaChart2" class="chart"></div>
+            <h2>Retorno</h2>
+            <div class="card">
+                <b class="text"><i class="fa-solid fa-chart-line"></i> Payback projetado</b>
+                <p class="text">R$ 400.000,00/R$ 4.000,00 por mês, resultando em:</p>
+                <b class="text">100 meses (8,3 anos)</b>            
+            </div>
+            <div class="card">
+                <b class="text"><i class="fa-solid fa-chart-line"></i> Payback corrigido</b>
+                <p class="text">R$ 400.000,00 / R$ 5.000,00</p>
+                <b class="text">80 meses (6,6 anos)</b>            
+            </div>
+
+
+
+            <div class="card">
+            <h1 style="text-align: center;">Tabela de Rentabilidade</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ano</th>
+                        <th>Fluxo de caixa</th>
+                        <th>Saldo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>0</td>
+                        <td>-R$ 18.000,00</td>
+                        <td>-R$ 18.000,00</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>R$ 5.425,00</td>
+                        <td>-R$ 12.575,00</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>R$ 5.994,00</td>
+                        <td>-R$ 6.581,00</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>R$ 6.692,00</td>
+                        <td>-R$ 489,00</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>R$ 4.458,00</td>
+                        <td>R$ 3.969,00</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+
         </div>
     </div>
-    <div class="content">
-        <div><h2>Selecione o mês: <select name="UC">
-                <option value="1">Jan/2023</option>
-                <option value="2">Fev/2023</option>
-                <option value="3">Mar/2023</option>
-                <option value="4">Abr/2023</option>
-                <option value="5">Mai/2023</option></select></h2></div>
 
-        <div class="card"><div><p>Fatura da usina janeiro/2023</p></div><div><i class="fa-solid fa-magnifying-glass"></i><i class="fa-solid fa-print"></i><i class="fa-solid fa-download"></i></div></div>
-        <div class="card"><div><p>Demonstrativo janeiro/2023</p></div><div><i class="fa-solid fa-magnifying-glass"></i><i class="fa-solid fa-print"></i><i class="fa-solid fa-download"></i></div></div>
-        <div class="card"><div><p>Comprovante de pagamento dividendos janeiro/2023</p></div><div><i class="fa-solid fa-magnifying-glass"></i><i class="fa-solid fa-print"></i><i class="fa-solid fa-download"></i></div></div>
-        <h2>Contratos</h2>
-        <div class="card"><div><p>Contrato de locação Canal Verde</p></div><div><i class="fa-solid fa-magnifying-glass"></i><i class="fa-solid fa-print"></i><i class="fa-solid fa-download"></i></div></div>
-        <div class="card"><div><p>Contrato de comodato Canal Verde</p></div><div><i class="fa-solid fa-magnifying-glass"></i><i class="fa-solid fa-print"></i><i class="fa-solid fa-download"></i></div></div>
+<script>
+    function toggleSidebar() {
+        var sidebar = document.getElementById('sidebar');
+        sidebar.classList.toggle('expanded');
+    }
 
-    </div>
+    // Configuração do gráfico de economia
+    var options = {
+        chart: {
+        type: 'bar',
+        width: '80%', // Use valores em porcentagem ou pixels
+        height: 200    // Ajuste a altura do gráfico
+        },
+        title: {
+            text: 'Geração'
+        },
+        series: [{
+            name: 'Economia',
+            data: [16967, 15824, 13825, 12714, 13977, 18178] // Exemplo de dados
+        }],
+        xaxis: {
+            categories: ['Jan/2023', 'Fev/2023', 'Mar/2023', 'Abr/2023', 'Mai/2023', 'Jun/2023']
+        },
+        colors: ['#006b3c']
+    };
 
-    <script>
-        function toggleSidebar() {
-            var sidebar = document.getElementById('sidebar');
-            sidebar.classList.toggle('expanded');
+    var chart = new ApexCharts(document.querySelector("#economiaChart"), options);
+    chart.render();
+
+    var options = {
+        chart: {
+        type: 'line',
+        width: '80%', // Use valores em porcentagem ou pixels
+        height: 200    // Ajuste a altura do gráfico
+        },
+        title: {
+            text: ''
+        },
+        series: [{
+            name: 'Rentabilidade',
+            data: [1.8, 1.7, 1.1, 1.45, 1.52, 2] // Exemplo de dados
+        },
+        {
+            name: 'Media',
+            data: [1.6, 1.6, 1.6, 1.6, 1.6, 1.6] // Exemplo de dados  
         }
+        ],
+        xaxis: {
+            categories: ['Jan/2023', 'Fev/2023', 'Mar/2023', 'Abr/2023', 'Mai/2023']
+        },
+        colors: ['#006b3c', '#FF5733']
+    };
+
+    var chart = new ApexCharts(document.querySelector("#economiaChart2"), options);
+    chart.render();
     
-    </script>
+    var options = {
+        chart: {
+        type: 'bar',
+        width: '80%', // Use valores em porcentagem ou pixels
+        height: 200    // Ajuste a altura do gráfico
+        },
+        title: {
+            text: ''
+        },
+        series: [{
+            name: 'Energia injetada',
+            data: [16390, 12661, 12071, 9000, 14250, 14648] // Exemplo de dados
+        },
+        {
+            name: 'Saldo',
+            data: [1889, 1126, 4407, 107, 844, 1360] // Exemplo de dados 
+        }],
+        xaxis: {
+            categories: ['Jan/2023', 'Fev/2023', 'Mar/2023', 'Abr/2023', 'Mai/2023', 'Jun/2023']
+        },
+        colors: ['#006b3c', '#FF5733']
+    };
+
+    var chart = new ApexCharts(document.querySelector("#economiaChart3"), options);
+    chart.render();
+    var options = {
+        chart: {
+        type: 'bar',
+        width: '80%', // Use valores em porcentagem ou pixels
+        height: 200    // Ajuste a altura do gráfico
+        },
+        title: {
+            text: ''
+        },
+        series: [{
+            name: 'Energia injetada',
+            data: [6234.19, 6064.80, 3830.40, 5137.43, 5388.52, 6975.58] // Exemplo de dados
+        }],
+        xaxis: {
+        categories: ['Jan/2023', 'Fev/2023', 'Mar/2023', 'Abr/2023', 'Mai/2023', 'Jun/2023']
+    },
+
+
+
+    yaxis: {
+        labels: {
+            formatter: function (value) {
+                return 'R$ ' + value.toFixed(2); // Exibe o valor com duas casas decimais
+            }
+        }
+    },
+    tooltip: {
+        y: {
+            formatter: function (value) {
+                return 'R$ ' + value.toFixed(2); // Exibe o valor no tooltip com prefixo
+            }
+        }
+    },
+    colors: ['#006b3c']   
+    };
+
+    var chart = new ApexCharts(document.querySelector("#economiaChart4"), options);
+    chart.render();
+
+
+    
+    
+</script>
 </body>
 </html>

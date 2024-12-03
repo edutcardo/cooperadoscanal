@@ -21,7 +21,7 @@
         }
         .sidebar {
             width: 60px;
-            background-color: #006b3c;
+            background-color: 0 solid #e5e7eb;
             transition: width 0.3s;
             overflow: hidden;
             position: fixed; /* Torna a sidebar fixa */
@@ -57,7 +57,7 @@
         }
         .sidebar:hover a .text {
             display: inline-block; /* Exibe o texto quando a barra está em hover */ 
-            color: white; /* Cor branca */
+            color: #000000; /* Cor branca */
         }
         .sidebar:hover .span {
             text-decoration: none;
@@ -102,21 +102,15 @@
             display: flex;
         }
         .content1 {
-            width: 60%;
+            width: 100%;
         }
-        .content2 {
-            width: 40%;
-            padding-left: 16px;
-            align-items: right;
-        }
+
         .card {
             background-color: #fff;
             border-radius: 5px;
             padding: 20px;
             margin-bottom: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-
-
         }
         .chart {
             height: 300px;
@@ -146,7 +140,7 @@
             width: calc(100% - 60px); /* Largura inicial, descontando a largura inicial da sidebar */
             height: 45px;
             background-color: #F5F5F5;
-            color: black;
+            color: rgb(64, 64, 64);
             justify-content: space-between;
             padding: 10px 20px;
             position: fixed;
@@ -160,7 +154,7 @@
 
         }
         .topbar a {
-            color: black;
+            color: rgb(64, 64, 64);
             padding: 15px 0px;
             text-decoration: none;
             text-align: center;
@@ -217,12 +211,295 @@
         tr:hover {
             background-color: #f1f1f1;
         }
+        .select-container {
+            position: relative;
+            width: 350px;
+            margin: 0px;
+            
+        }
 
+        #search {
+            width: 100%;
+            padding: 10px 40px 10px 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        .search-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #888;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 45px;
+            width: 100%;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: none;
+        }
+
+        .option {
+            padding: 10px;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .option:last-child {
+            border-bottom: none;
+        }
+
+        .option:hover, .option.selected {
+            background-color: #f0f0f0;
+        }
+
+        .check-icon {
+            color: blue;
+            margin-right: 10px;
+            margin-top: 5px;
+            flex-shrink: 0;
+        }
+
+        .option-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .address {
+            font-size: 0.9em;
+            color: #555;
+        }
+        .spam-container {
+            background-color: #f9f9f9;
+            padding: 10px 15px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-family: Arial, sans-serif;
+            margin-top: 30px;
+        }
+
+        .numero {
+            font-weight: bold;
+            color: blue;
+            margin-right: 10px;
+        }
+
+        .endereco {
+            font-size: 0.9em;
+            color: #333;
+            margin-right: auto;
+        }
+
+        .status {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .status-indicador {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: yellow;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+        .topcontent{
+            display: flex;
+        }
+        .topcontent1{
+            width: 57%;
+            align-items: center;
+            padding-right: 40px;
+
+        }
+        .topcontent2{
+            width: 20%;
+            padding-left: 10px;
+            align-items: center;
+
+        }
+        .topcontent3{
+            width: 20%;
+            padding-left: 10px;
+        }
+        .alert-container {
+            border: 1px solid #cce5ff;
+            background-color: #e9f4ff;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: fit-content;
+            display: flex;
+            align-items: center;
+            margin: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        .alert-container i {
+            color: #007bff;
+            margin-right: 10px;
+        }
+
+        .alert-container strong {
+            color: #007bff;
+            margin-right: 5px;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999; /* Certifique-se de que este valor é maior do que outros elementos */
+        }
+
+        .popup-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            position: relative;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .close {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            color: #aaa;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+        .economia-container {
+            display: block;
+            font-family: 'Inter', sans-serif;
+            color: #333;
+            text-align: right;
+
+        }
+
+        .icon {
+            font-size: 24px;
+            color: blue;
+            margin-right: 10px;
+        }
+
+        .text p {
+            margin: 0;
+            line-height: 1.2;
+            text-align: right;
+        }
+
+        .valor {
+            font-size: 1.5em;
+            color: blue;
+            font-weight: bold;
+        }
+
+        .periodo {
+            font-size: 0.9em;
+            color: #aaa;
+        }
+        .card {
+            background-color: #e0ffe0; /* Verde pastel */
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .card:hover {
+            background-color: #b3e6b3; /* Verde suave no hover */
+        }
+        .card-content {
+            display: none;
+            padding: 10px;
+            background-color: #d9f2d9; /* Verde suave */
+            border-radius: 8px;
+            margin-top: 10px;
+            text-align: right;
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            background-color: #ccf2cc; /* Verde suave */
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .status {
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+        }
+        .status-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+        .registered {
+            background-color: #008000; /* Verde para registrado */
+        }
+
+        .liquidated {
+            background-color: #32cd32; /* Verde limão para liquidado */
+        }
+        .more-cards {
+            text-align: center;
+            cursor: pointer;
+            padding: 10px;
+            background-color: #e0ffe0; /* Verde pastel suave */
+            border-radius: 10px;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .more-cards:hover {
+            background-color: #ccffcc; /* Verde mais intenso no hover */
+        }
+        .card-container {
+            background-color: #e6ffe6; /* Verde claro */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-top: 16px;
+        }
 
     </style>
 </head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <body>
     <div class="sidebar" id="sidebar">
         <div class="toggle-btn" onclick="toggleSidebar()">☰</div>
@@ -230,115 +507,145 @@
             <img src="logo.png" alt="Logo" class="logo"> 
         </div> 
         <a href="painel.html" class="home">
-            <i class="fa-solid fa-coins icon"></i> <span class="text">DRE</span>
+            <i class="fa-solid fa-coins"></i> <span class="text">Início</span>
         </a>
+
         <a href="reports.html">
-            <i class="fa-solid fa-solar-panel icon"></i><span class="text">Usinas</span>
+            <i class="fa-solid fa-solar-panel"></i><span class="text">Relatórios</span>
         </a>
         <a href="calendar.html">
-            <i class="fa-solid fa-gauge icon"></i> <span class="text">Dashboard</span>
+            <i class="fa-solid fa-gauge"></i> <span class="text">Gráficos</span>
         </a>
         <a href="help.html">
-            <i class="fa-solid fa-paste icon"></i><span class="text">Documentos</span>
+            <i class="fa-solid fa-paste"></i><span class="text">Perfil</span>
         </a>
-    </div>
-    <div class="topbar">
-        <div><i class="fa-regular fa-lightbulb"></i>  Pedro Mascarenhas Bastos</div>
-        <div>
-            <a href="#uc"><i class="fa-regular fa-sun"></i> Usina: <select name="UC">
-                <option value="sim">UC: 41456511</option>
-                <option value="nao">UC: 11466522</option>
-            </select></a>
-            <a href="#about"><i class="fa-solid fa-chart-pie"></i> Percentual: 100%</a>
-            <a href="#contact"><i class="fa-solid fa-plug"></i> UC: 123456789</a>
-            <a href="#contact"><i class="fa-solid fa-leaf"></i> Cap. instalada: 75 kW</a>
-            <a href="#about"><i class="fa-solid fa-location-dot"></i> Localização: Maringá, PR</a>
-            <a href="#contact">Sair <i class="fa-solid fa-door-open"></i> </a>
-        </div>
     </div>
     <div class="content">
         
         <div class="content1">
-            <h4>Selecione o mês: <select name="UC">
-                <option value="sim">Jan/2023</option>
-                <option value="nao">Fev/2023</option>   
-                <option value="sim">Abr/2023</option>
-                <option value="nao">Mai/2023</option>
-                <option value="sim">Jun/2023</option>
+            <h2>Início</h2>
+            <div class="topcontent">
+                <div class="topcontent1">
+                    <div class="select-container">
+                        <input type="text" id="search" placeholder="Selecione sua UC" autocomplete="off">
+                        <i class="fas fa-search search-icon"></i>
+                        <div class="dropdown">
+                            <div class="option">
+                                <i class="fas fa-check-circle check-icon"></i>
+                                <div class="option-text">
+                                    <strong>103217568</strong>
+                                    <div class="address">R Nardina Rodrigues Johansen, 405 – TR01 AP608, CEP: 87005002, Maringa - PR</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="spam-container">
+                        <span class="numero">103217568</span>
+                        <span class="endereco">R Nardina Rodrigues Johansen, 405 – TR01 AP608, CEP: 87005002, Maringa - PR</span>
+                        <span class="status">
+                            <div></div>
+                            <span class="status-indicador"></span>
+                            Faturas pendentes
+                        </span>
+                    </div>
+                </div>
+                <div class="topcontent2">
+                    <div class="alert-container" onclick="openPopup()">
+                        <i class="fas fa-info-circle"></i>
+                        <strong>Atenção!</strong><br>
+                        <span>Você possui 1 aviso importante!</span>
+                    </div>
+                
+                    <div id="popup" class="popup">
+                        <div class="popup-content">
+                            <span class="close" onclick="closePopup()">&times;</span>
+                            <p>Este é o texto do seu aviso importante que aparece na pop-up.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="topcontent3">
+                    <div class="economia-container">
+                        <div class="icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="text">
+                            <p>Você já economizou</p>
+                            <p class="valor">R$ 11,97</p>
+                            <p class="periodo">em 6 meses</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            </select></a></h4>
-            <h2><i class="fa-regular fa-chart-bar"></i> Geração</h2>
-            <div id="economiaChart" class="chart"></div>
-            <h2><i class="fa-regular fa-chart-bar"></i> Histórico de compensação</h2>
-            <div id="economiaChart3" class="chart"></div>
-
-            <h2><i class="fa-solid fa-chart-line"></i> Dividendos</h2>
-            <div id="economiaChart4" class="chart"></div>
+            <div class="card-container">
+                <div id="cards-container">
+                    <div class="card" onclick="toggleDetails(this)">
+                        <div class="card-header">
+                            NOV/24 Canal Verde
+                            <div class="status">
+                                <div class="status-indicator registered"></div>
+                                Registrado
+                            </div>
+                        </div>
+                        <div>Total: R$ 131,94 <i class="fas fa-chevron-down"></i></div>
+                    </div>
+                    <div class="card-content">
+                        <p>Detalhes do cartão NOV/24...</p>
+                        <a href="nov_24.pdf" ><i class="fa-regular fa-file-pdf"></i> Ver PDF</a>
+                    </div>
+                    <div class="card" onclick="toggleDetails(this)">
+                        <div class="card-header">
+                            OUT/24 Canal Verde
+                            <div class="status">
+                                <div class="status-indicator registered"></div>
+                                Registrado
+                            </div>
+                        </div>
+                        <div>Total: R$ 112,58 <i class="fas fa-chevron-down"></i></div>
+                    </div>
+                    <div class="card-content">
+                        <p>Detalhes do cartão OUT/24...</p>
+                        <a href="out_24.pdf" ><i class="fa-regular fa-file-pdf"></i> Ver PDF</a>
+                    </div>
+                    <div class="card" onclick="toggleDetails(this)">
+                        <div class="card-header">
+                            SET/24 Canal Verde
+                            <div class="status">
+                                <div class="status-indicator liquidated"></div>
+                                Liquidado
+                            </div>
+                        </div>
+                        <div>Total: R$ 95,57 <i class="fas fa-chevron-down"></i></div>
+                    </div>
+                    <div class="card-content">
+                        <p>Detalhes do cartão SET/24...</p>
+                        <a href="set_24.pdf" ><i class="fa-regular fa-file-pdf"></i> Ver PDF</a>
+                    </div>
+                    <div class="card" onclick="toggleDetails(this)">
+                        <div class="card-header">
+                            AGO/24 Canal Verde
+                            <div class="status">
+                                <div class="status-indicator liquidated"></div>
+                                Liquidado
+                            </div>
+                        </div>
+                        <div>Total: R$ 89,34 <i class="fas fa-chevron-down"></i></div>
+                    </div>
+                    <div class="card-content">
+                        <p>Detalhes do cartão AGO/24...</p>
+                        <a href="ago_24.pdf" ><i class="fa-regular fa-file-pdf"></i> Ver PDF</a>
+                    </div>
+            
+                    <!-- Mais cards podem ser adicionados aqui -->
+            
+                </div>
+            
+                <div class="more-cards" onclick="loadMoreCards()">Ver mais</div>
+            </div>
+        
         </div>
-        <div class="content2">
-            <h4 class="ajuda"><button><i class="fa-solid fa-circle-info"></i> Ajuda</button></h4>
-            <h2><i class="fa-solid fa-chart-line"></i> Rentabilidade</h2>
-            <div id="economiaChart2" class="chart"></div>
-            <h2>Retorno</h2>
-            <div class="card">
-                <b class="text"><i class="fa-solid fa-chart-line"></i> Payback projetado</b>
-                <p class="text">R$ 400.000,00/R$ 4.000,00 por mês, resultando em:</p>
-                <b class="text">100 meses (8,3 anos)</b>            
-            </div>
-            <div class="card">
-                <b class="text"><i class="fa-solid fa-chart-line"></i> Payback corrigido</b>
-                <p class="text">R$ 400.000,00 / R$ 5.000,00</p>
-                <b class="text">80 meses (6,6 anos)</b>            
-            </div>
-            <div class="card">
-                <b class="text">Payback corrigido</b>
-                <p class="text">R$ 400.000,00 / R$ 5.000,00</p>
-                <b class="text">80 meses (6,6 anos)</b>            
-            </div>
 
 
-            <div class="card">
-            <h1 style="text-align: center;">Tabela de Rentabilidade</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Ano</th>
-                        <th>Fluxo de caixa</th>
-                        <th>Saldo</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>0</td>
-                        <td>-R$ 18.000,00</td>
-                        <td>-R$ 18.000,00</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>R$ 5.425,00</td>
-                        <td>-R$ 12.575,00</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>R$ 5.994,00</td>
-                        <td>-R$ 6.581,00</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>R$ 6.692,00</td>
-                        <td>-R$ 489,00</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>R$ 4.458,00</td>
-                        <td>R$ 3.969,00</td>
-                    </tr>
-                </tbody>
-            </table>
-            </div>
-
-        </div>
-    </div>
 
 <script>
     function toggleSidebar() {
@@ -459,6 +766,61 @@
 
     var chart = new ApexCharts(document.querySelector("#economiaChart4"), options);
     chart.render();
+
+        document.getElementById('search').addEventListener('focus', function() {
+        document.querySelector('.dropdown').style.display = 'block';
+    });
+
+    document.getElementById('search').addEventListener('blur', function() {
+        setTimeout(() => {
+            document.querySelector('.dropdown').style.display = 'none';
+        }, 100);
+    });
+
+    document.querySelectorAll('.option').forEach(option => {
+        option.addEventListener('click', function() {
+            document.getElementById('search').value = option.querySelector('strong').textContent.trim();
+            document.querySelector('.dropdown').style.display = 'none';
+        });
+        });
+        function openPopup() {
+            document.getElementById('popup').style.display = 'flex';
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+        function toggleDetails(card) {
+        const content = card.nextElementSibling;
+        if (content.style.display === "block") {
+            content.style.display = "none";
+        } else {
+            content.style.display = "block";
+        }
+    }
+
+    function loadMoreCards() {
+        const container = document.getElementById('cards-container');
+        // Exemplo de card adicional
+        const newCard = document.createElement('div');
+        newCard.innerHTML = `
+            <div class="card" onclick="toggleDetails(this)">
+                <div class="card-header">
+                    JUL/24 Canal Verde
+                    <div class="status">
+                        <div class="status-indicator liquidated"></div>
+                        Liquidado
+                    </div>
+                </div>
+                <div>Total: R$ 147,32 <i class="fas fa-chevron-down"></i></div>
+            </div>
+            <div class="card-content">
+                <p>Detalhes do cartão JUL/24...</p>
+                <a href="jul_24.pdf" ><i class="fa-regular fa-file-pdf"></i> Ver PDF</a>
+            </div>
+        `;
+        container.appendChild(newCard);
+    }
 
 
     

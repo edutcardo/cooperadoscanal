@@ -14,14 +14,14 @@
             margin: 0;
             font-family: Arial, sans-serif;
             display: flex;
-            padding-top: 45px; /* Garante espaço abaixo da topbar */
+            padding-top: 10px; /* Garante espaço abaixo da topbar */
         }
         a,p {
             font-family: Epilogue !important;
         }
         .sidebar {
             width: 60px;
-            background-color: #006b3c;
+            background-color: 0 solid #e5e7eb;
             transition: width 0.3s;
             overflow: hidden;
             position: fixed; /* Torna a sidebar fixa */
@@ -57,7 +57,7 @@
         }
         .sidebar:hover a .text {
             display: inline-block; /* Exibe o texto quando a barra está em hover */ 
-            color: white; /* Cor branca */
+            color: #000000; /* Cor branca */
         }
         .sidebar:hover .span {
             text-decoration: none;
@@ -146,7 +146,7 @@
             width: calc(100% - 60px); /* Largura inicial, descontando a largura inicial da sidebar */
             height: 45px;
             background-color: #F5F5F5;
-            color: black;
+            color: rgb(64, 64, 64);
             justify-content: space-between;
             padding: 10px 20px;
             position: fixed;
@@ -160,7 +160,7 @@
 
         }
         .topbar a {
-            color: black;
+            color: rgb(64, 64, 64);
             padding: 15px 0px;
             text-decoration: none;
             text-align: center;
@@ -217,22 +217,6 @@
         tr:hover {
             background-color: #f1f1f1;
         }
-        .progress-bar {
-            width: 100%;        /* Largura da barra */
-            background-color: #e0e0e0; /* Cor do fundo da barra */
-            border-radius: 8px; /* Bordas arredondadas */
-            overflow: hidden;   /* Garante que o progresso não "vaze" */
-            height: 10px;       /* Altura da barra */
-            margin-top: 5px;
-        }
-
-        .progress {
-            width: 0%;               /* Largura inicial da barra de progresso */
-            height: 100%;            /* Preenche toda a altura do contêiner */
-            background-color: #4caf50; /* Cor do progresso */
-            transition: width 0.3s ease; /* Animação suave ao alterar o progresso */
-        }
-
 
 
     </style>
@@ -246,43 +230,22 @@
             <img src="logo.png" alt="Logo" class="logo"> 
         </div> 
         <a href="painel.html" class="home">
-            <i class="fa-solid fa-coins icon"></i> <span class="text">DRE</span>
+            <i class="fa-solid fa-coins"></i> <span class="text">Início</span>
         </a>
         <a href="reports.html">
-            <i class="fa-solid fa-solar-panel icon"></i><span class="text">Usinas</span>
+            <i class="fa-solid fa-solar-panel"></i><span class="text">Relatórios</span>
         </a>
         <a href="calendar.html">
-            <i class="fa-solid fa-gauge icon"></i> <span class="text">Dashboard</span>
+            <i class="fa-solid fa-gauge"></i> <span class="text">Gráficos</span>
         </a>
         <a href="help.html">
-            <i class="fa-solid fa-paste icon"></i><span class="text">Documentos</span>
+            <i class="fa-solid fa-paste"></i><span class="text">Perfil</span>
         </a>
-    </div>
-    <div class="topbar">
-        <div><i class="fa-regular fa-lightbulb"></i>  Pedro Mascarenhas Bastos</div>
-        <div>
-            <a href="#uc"><i class="fa-regular fa-sun"></i> Usina: <select name="UC">
-                <option value="sim">UC: 41456511</option>
-                <option value="nao">UC: 11466522</option>
-            </select></a>
-            <a href="#about"><i class="fa-solid fa-chart-pie"></i> Percentual: 100%</a>
-            <a href="#contact"><i class="fa-solid fa-plug"></i> UC: 123456789</a>
-            <a href="#contact"><i class="fa-solid fa-leaf"></i> Cap. instalada: 75 kW</a>
-            <a href="#about"><i class="fa-solid fa-location-dot"></i> Localização: Maringá, PR</a>
-            <a href="#contact">Sair <i class="fa-solid fa-door-open"></i> </a>
-        </div>
     </div>
     <div class="content">
         
         <div class="content1">
-            <h4>Selecione o mês: <select name="UC">
-                <option value="sim">Jan/2023</option>
-                <option value="nao">Fev/2023</option>   
-                <option value="sim">Abr/2023</option>
-                <option value="nao">Mai/2023</option>
-                <option value="sim">Jun/2023</option>
 
-            </select></a></h4>
             <h2><i class="fa-regular fa-chart-bar"></i> Geração</h2>
             <div id="economiaChart" class="chart"></div>
             <h2><i class="fa-regular fa-chart-bar"></i> Histórico de compensação</h2>
@@ -304,10 +267,7 @@
             <div class="card">
                 <b class="text"><i class="fa-solid fa-chart-line"></i> Payback corrigido</b>
                 <p class="text">R$ 400.000,00 / R$ 5.000,00</p>
-                <b class="text">80 meses (6,6 anos)</b>    
-                <div class="progress-bar">
-                <div class="progress" style="width: 75%;"></div>
-            </div>        
+                <b class="text">80 meses (6,6 anos)</b>            
             </div>
 
 
