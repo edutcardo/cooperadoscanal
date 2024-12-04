@@ -38,31 +38,34 @@
 
         }
         .sidebar a {
-            display: flex; /* Ativa o layout flexível */
-            align-items: center; /* Centraliza verticalmente o conteúdo */
-            justify-content: flex-start; /* Centraliza horizontalmente (altere para `center` se necessário) */
-            padding: 10px; /* Ajusta o espaçamento interno */
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 10px;
             color: #333;
             text-decoration: none;
             position: relative;
             z-index: 2;
-            gap: 10px; /* Espaço entre ícone e texto */
+            gap: 10px;
             margin-left: 8px;
             margin-top: 24px;
-            font-family: Epilogue !important;
+            font-family: 'Epilogue', sans-serif !important;
+            font-size: 14px !important; /* Define o tamanho da fonte */
         }
         .sidebar a:hover {
             background-color: #ddd;
         }
         .sidebar a .text {
-            display: none; /* Oculta o texto por padrão */
-            margin-left: 10px; /* Adiciona espaçamento entre ícone e texto */
-            font-family: Epilogue !important;
+            display: none;
+            margin-left: 10px;
+            font-family: 'Epilogue', sans-serif !important;
+            font-size: 14px !important; /* Define o tamanho da fonte */
         }
         .sidebar:hover a .text {
-            display: inline-block; /* Exibe o texto quando a barra está em hover */ 
-            color: #000000; /* Cor branca */
-            font-family: Epilogue !important;
+            display: inline-block;
+            color: #000;
+            font-family: 'Epilogue', sans-serif !important;
+            font-size: 14px !important; /* Define o tamanho da fonte */
         }
         .sidebar:hover .span {
             text-decoration: none;
