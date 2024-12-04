@@ -109,7 +109,7 @@
             background-color: #fff;
             border-radius: 5px;
             padding: 20px;
-            margin-bottom: 10px;
+            margin-bottom: 40px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         .chart {
@@ -263,7 +263,7 @@
         }
 
         .check-icon {
-            color: blue;
+            color: #018538;
             margin-right: 10px;
             margin-top: 5px;
             flex-shrink: 0;
@@ -291,7 +291,7 @@
 
         .numero {
             font-weight: bold;
-            color: blue;
+            color: #018538;
             margin-right: 10px;
         }
 
@@ -336,8 +336,8 @@
             padding-left: 10px;
         }
         .alert-container {
-            border: 1px solid #cce5ff;
-            background-color: #e9f4ff;
+            border: 1px solid #ff4949;
+            background-color: #ffd7d7;
             padding: 10px 15px;
             border-radius: 8px;
             cursor: pointer;
@@ -349,12 +349,12 @@
         }
 
         .alert-container i {
-            color: #007bff;
+            color: #ff0000;
             margin-right: 10px;
         }
 
         .alert-container strong {
-            color: #007bff;
+            color: #000000;
             margin-right: 5px;
         }
 
@@ -403,7 +403,7 @@
 
         .icon {
             font-size: 24px;
-            color: blue;
+            color: #018538;
             margin-right: 10px;
         }
 
@@ -415,7 +415,7 @@
 
         .valor {
             font-size: 1.5em;
-            color: blue;
+            color: #018538;
             font-weight: bold;
         }
 
@@ -433,24 +433,30 @@
             align-items: center;
             cursor: pointer;
             transition: background-color 0.3s;
+
         }
         .card:hover {
-            background-color: #b3e6b3; /* Verde suave no hover */
+            background-color: #9fe29f; /* Verde suave no hover */
         }
         .card-content {
             display: none;
             padding: 10px;
-            background-color: #d9f2d9; /* Verde suave */
+            background-color: #efffef; /* Verde suave */
             border-radius: 8px;
             margin-top: 10px;
+            margin-bottom: 50px;
             text-align: right;
+            margin-top: 0px;
         }
         .card-header {
             display: flex;
             align-items: center;
-            background-color: #ccf2cc; /* Verde suave */
+            background-color: #e0ffe0; /* Verde suave */
             padding: 10px;
             border-radius: 5px;
+        }
+        .card:hover .card-header {
+            background-color: #9fe29f; /* Mesma cor do card no hover */
         }
 
         .status {
@@ -475,7 +481,7 @@
             text-align: center;
             cursor: pointer;
             padding: 10px;
-            background-color: #e0ffe0; /* Verde pastel suave */
+            background-color: #ccffcc; /* Verde pastel suave */
             border-radius: 10px;
             margin-top: 20px;
             transition: background-color 0.3s;
@@ -485,11 +491,13 @@
             background-color: #ccffcc; /* Verde mais intenso no hover */
         }
         .card-container {
-            background-color: #e6ffe6; /* Verde claro */
+            background-color: #e0ffe0; /* Verde claro */
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             margin-top: 16px;
+            gap: 30px;
+            border: 1px solid #56dd66;
         }
 
     </style>

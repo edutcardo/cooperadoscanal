@@ -29,11 +29,9 @@
             height: 100vh; /* Altura total da tela */
             top: 0; /* Começa do topo */
             left: 0; /* Fixa na lateral esquerda */
-            font-family: 'Epilogue', sans-serif !important; /* Certifique-se de usar a fonte Epilogue */
-            font-weight: 400; /* Define o peso da fonte para normal */
+            font-family: 'Epilogue', sans-serif;
+            font-weight: 400;
         }
-        
-
         .sidebar:hover {
             width: 200px;
 
@@ -60,6 +58,7 @@
             display: none;
             margin-left: 10px;
             font-weight: 400; /* Também aplica peso normal ao texto */
+            font-family: 'Epilogue', sans-serif !important; /* Certifique-se de usar a fonte Epilogue */
         }
         .sidebar:hover a .text {
             display: inline-block; /* Exibe o texto quando a barra está em hover */ 
@@ -115,7 +114,7 @@
             background-color: #fff;
             border-radius: 5px;
             padding: 20px;
-            margin-bottom: 10px;
+            margin-bottom: 40px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         .logo {
@@ -509,7 +508,7 @@
             margin-right: 8px;
         }
         .discount {
-            background-color: blue;
+            background-color: #018538;
             color: white;
             padding: 4px 8px;
             border-radius: 4px;
@@ -520,7 +519,7 @@
             color: red;
         }
         .preco {
-            color: blue;
+            color: #018538;
             font-size: 24px; /* Ajuste o tamanho conforme necessário */
         }
         .box-container {
@@ -536,22 +535,23 @@
             text-align: center;
             position: relative;
             width: 150px;
+
         }
         .box span {
             display: block;
             font-size: 18px;
-            margin-bottom: 10px;
+            margin-bottom: px;
         }
         .underline {
             position: absolute;
-            bottom: 10px;
+            bottom: 22px;
             left: 10px;
             right: 10px;
             height: 4px;
             border-radius: 2px;
         }
         .blue-underline {
-            background-color: blue;
+            background-color: green;
         }
         .orange-underline {
             background-color: orange;
@@ -696,7 +696,7 @@
             <div class="box-container">
                 <div class="box">
                     <span>R$ 0,00</span>
-                    <span>Conta PLIN</span>
+                    <span>Conta Canal</span>
                     <div class="underline blue-underline"></div>
                 </div>
                 <div class="sign">+</div>
@@ -708,7 +708,7 @@
                 <div class="sign">=</div>
                 <div class="box">
                     <span>R$ 0,00</span>
-                    <span>Total com desconto PLIN</span>
+                    <span>Total com desconto Canal</span>
                     <div class="underline blue-underline"></div>
                 </div>
             </div>
@@ -897,7 +897,7 @@
         newCard.innerHTML = `
             <div class="card" onclick="toggleDetails(this)">
                 <div class="card-header">
-                    JUL/24 Canal Verde
+                    JUL/24 Canal
                     <div class="status">
                         <div class="status-indicator liquidated"></div>
                         Liquidado
