@@ -14,7 +14,7 @@
             margin: 0;
             font-family: Arial, sans-serif;
             display: flex;
-            padding-top: 45px; /* Garante espaço abaixo da topbar */
+            overflow-x: hidden; /* Prevenir overflow horizontal */
         }
         a,p {
             font-family: Epilogue !important;
@@ -102,31 +102,23 @@
             display: flex;
         }
         .content1 {
-            width: 60%;
+            width: 100%;
         }
-        .content2 {
-            width: 40%;
-            padding-left: 16px;
-            align-items: right;
-        }
+
         .card {
-            background-color: #fff;
+            display: flex; /* Garante que flexbox é usado */
+            align-items: center; /* Alinha verticalmente o ícone com o texto */
+            background-color: white;
+            padding: 10px; /* Ajuste conforme necessário */
             border-radius: 5px;
-            padding: 20px;
-            margin-bottom: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-
-
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            text-align: left; /* Alinha o texto à esquerda */
+            width: auto; /* Ajusta conforme necessário */
+            margin-bottom: 5px;
+            margin-right: 5px;
+            font-size: 14px; /* Ajuste conforme necessário */
         }
-        .chart {
-            height: 300px;
-            background-color: #f8f8f8;
-            border-radius: 5px;
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+
         .logo {
             width: 40px; /* Define o tamanho inicial da logo */
             height: 40px; /* Ajuste as dimensões conforme necessário */
@@ -141,34 +133,6 @@
             height: 80px;
             padding: 8px;
         }
-
-        .topbar {
-            width: calc(100% - 60px); /* Largura inicial, descontando a largura inicial da sidebar */
-            height: 45px;
-            background-color: #F5F5F5;
-            color: rgb(64, 64, 64);
-            justify-content: space-between;
-            padding: 10px 20px;
-            position: fixed;
-            top: 0;
-            z-index: 3; /* Garante que esteja acima da sidebar */
-            margin-left: 60px; /* Inicialmente alinhado com a sidebar retraída */
-            display: flex;
-            align-items: center;
-            transition: margin-left 0.3s ease, width 0.3s ease; /* Transições suaves */
-            font-weight: bold; /* Negrito */
-
-        }
-        .topbar a {
-            color: rgb(64, 64, 64);
-            padding: 15px 0px;
-            text-decoration: none;
-            text-align: center;
-            font-weight: bold; /* Negrito */
-            font-size: 13px;
-            margin-right: 40px;
-            
-        }
         
 
         .formcrud {
@@ -182,6 +146,7 @@
             margin-bottom: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
+            height: 10px;
         }
         .containerlogo{
             width: 100%; /* Define o tamanho inicial da logo */
@@ -191,38 +156,516 @@
             align-items: center;
 
         }
-        .icon{
-            color: white;
+        .icon {
+            font-size: 12px; /* Reduz mais o tamanho do ícone */
+            align-items: center;
         }
         .formcrud{
             margin-top: 30px;
         }
-        table {
-            width: 80%;
-            margin: 20px auto;
-            border-collapse: collapse;
+
+        .select-container {
+            position: relative;
+            width: 350px;
+            margin: 0px;
+            
         }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
+
+        #search {
+            width: 30%;
+            padding: 10px 40px 10px 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        .search-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #888;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 45px;
+            width: 100%;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: none;
+        }
+
+        .option {
+            padding: 10px;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .option:last-child {
+            border-bottom: none;
+        }
+
+        .option:hover, .option.selected {
+            background-color: #f0f0f0;
+        }
+
+        .check-icon {
+            color: blue;
+            margin-right: 10px;
+            margin-top: 5px;
+            flex-shrink: 0;
+        }
+        .option-text {
+            display: flex;
+            flex-direction: column;
+        }
+        .address {
+            font-size: 0.9em;
+            color: #555;
+        }
+        .spam-container {
+            background-color: #f9f9f9;
+            padding: 10px 15px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-family: Arial, sans-serif;
+            margin-top: 30px;
+        }   
+        .numero {
+            font-weight: bold;
+            color: blue;
+            margin-right: 10px;
+        }
+
+        .endereco {
+            font-size: 0.9em;
+            color: #333;
+            margin-right: auto;
+        }
+
+        .status {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .status-indicador {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: yellow;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+        .topcontent{
+            display: flex;
+            align-items: center;
+        }
+        .topcontent1{
+            width: 10%;
+        }
+        .topcontent2{
+            width: 10%;
+        }
+        .topcontent3{
+            width: 10%;
+        }
+        .alert-container {
+            border: 1px solid #cce5ff;
+            background-color: #e9f4ff;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: fit-content;
+            display: flex;
+            align-items: center;
+            margin: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        .alert-container i {
+            color: #007bff;
+            margin-right: 10px;
+        }
+
+        .alert-container strong {
+            color: #007bff;
+            margin-right: 5px;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999; /* Certifique-se de que este valor é maior do que outros elementos */
+        }
+
+        .popup-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            position: relative;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             text-align: center;
         }
-        th {
-            background-color: #f4f4f4;
+        .close {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            color: #aaa;
+        }
+        .close:hover {
+            color: #000;
+        }
+        .economia-container {
+            display: block;
+            font-family: 'Inter', sans-serif;
+            color: #333;
+            text-align: right;
+        }
+        .icon {
+            font-size: 24px;
+            color: blue;
+            margin-right: 10px;
+        }
+
+        .text p {
+            margin: 0;
+            line-height: 1.2;
+            text-align: right;
+        }
+
+        .valor {
+            font-size: 1.5em;
+            color: blue;
             font-weight: bold;
         }
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
+
+        .periodo {
+            font-size: 0.9em;
+            color: #aaa;
         }
-        tr:hover {
-            background-color: #f1f1f1;
+        .card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            min-width: 200px;
+            display: flex;
+            height: 30px;
         }
+        .card2 {
+            padding-top: 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+
+        }
+        .card:hover {
+            background-color: #b3e6b3; /* Verde suave no hover */
+        }
+        .card-content {
+            display: none;
+            padding: 10px;
+            background-color: #d9f2d9; /* Verde suave */
+            border-radius: 8px;
+            margin-top: 10px;
+            text-align: right;
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            background-color: #ccf2cc; /* Verde suave */
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .status {
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+        }
+        .status-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+        .registered {
+            background-color: #008000; /* Verde para registrado */
+        }
+
+        .liquidated {
+            background-color: #32cd32; /* Verde limão para liquidado */
+        }
+        .more-cards {
+            text-align: center;
+            cursor: pointer;
+            padding: 10px;
+            background-color: #e0ffe0; /* Verde pastel suave */
+            border-radius: 10px;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        .more-cards:hover {
+            background-color: #ccffcc; /* Verde mais intenso no hover */
+        }
+        .card-container {
+            background-color: #e6ffe6; /* Verde claro */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-top: 16px;
+        }
+        .date-picker {
+            position: relative;
+            display: inline-block;
+        }
+        #dateButton {
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 8px;
+            padding: 10px 40px 10px 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            background-color: #fff;
+
+        }
+        .dropdown2 {
+            display: none;
+            position: absolute;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 5px;
+            padding: 10px;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .year-selector {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 10px;
+        }
+
+        .months {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+        }
+
+        .months div {
+            padding: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #selectedMonth {
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .months div:hover {
+            background-color: #f0f0f0;
+        }
+
+        .year-selector span {
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .container {
+            padding-top: 10px;
+            display: flex;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+        .date {
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        .discount {
+            background-color: blue;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-right: 8px;
+        }
+        .flag {
+            margin-right: 4px;
+            color: red;
+        }
+        .preco {
+            color: blue;
+            font-size: 24px; /* Ajuste o tamanho conforme necessário */
+        }
+        .box-container {
+            display: flex;
+            gap: 20px;
+        }
+        .box {
+            background-color: white;
+            padding: 20px;
+            padding-bottom: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            width: 150px;
+        }
+        .box span {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .underline {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            height: 4px;
+            border-radius: 2px;
+        }
+        .blue-underline {
+            background-color: blue;
+        }
+        .orange-underline {
+            background-color: orange;
+        }
+        .sign {
+            align-self: center;
+            font-size: 24px;
+        }
+        .container {
+            display: flex;
+            gap: 20px;
+            align-items: center; /* Alinha verticalmente */
+        }
+        .icon {
+            font-size: 14px;
+            margin-bottom: 2px; /* Reduz o espaço abaixo do ícone */
+        }
+        .text {
+            margin: 0; /* Remove margem extra ao redor do texto */
+            line-height: 1; /* Ajusta o espaço entre linhas */
+            align-items: center;
+        }
+        .value {
+            color: gray;
+            font-size: 12px;
+            font-weight: bold;
+            margin-top: 2px; /* Reduz o espaço acima do valor */
+        }
+        .item {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            background-color: #e0e7e7;
+            padding: 20px;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            justify-content: center;
+            flex-direction: column;
+            margin-right: 7%;
+        }
+        .icon {
+            font-size: 20px; /* Ajuste conforme necessário */
+            margin-right: 10px; /* Espaçamento entre o ícone e o texto */
+            color: blue; /* Ajuste a cor conforme necessário */
+        }
+        
+        .text {
+            font-size: 14px;
+            color: #657a7a;
+        }
+        .value {
+            font-weight: bold;
+            color: #333; /* Cor do texto */
+            font-size: 14px; /* Ajuste conforme necessário */
+        }
+        .menuinferior{
+            display: flex;
+            padding-top: 24px;
+        }
+        .chart-container {
+            display: flex;
+            flex-wrap: wrap; /* Permite que os gráficos quebrem de linha, se necessário */
+            justify-content: flex-start; /* Alinha os gráficos à esquerda */
+            align-items: flex-start; /* Alinha os gráficos no topo do container */
+            gap: 90px;
+            margin-top: 20px;
+            max-width: 1056px; /* Define a largura máxima para o container */
+            height: 150px;
+        }
+
+        .chart {
+            flex: 1 1 45%; /* Permite que os gráficos se ajustem, mantendo uma largura de 45% */
+            min-width: 300px; /* Define uma largura mínima */
+            max-width: 500px; /* Define uma largura máxima */
+            height: 100px; /* Altura fixa para consistência */
+        }
+        
+        .chart0 {
+            flex: 1 1 45%; /* Permite que os gráficos se ajustem, mantendo uma largura de 45% */
+            min-width: 300px; /* Define uma largura mínima */
+            max-width: 1056px; /* Define uma largura máxima */
+            height: 100px; /* Altura fixa para consistência */
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 60px;
+            }
+
+            .sidebar:hover {
+                width: 150px; /* Ajuste conforme necessário */
+            }
+
+            .content {
+                margin-left: 60px; /* Ajuste conforme necessário */
+            }
+
+            .sidebar:hover ~ .content {
+                margin-left: 150px; /* Ajuste conforme necessário */
+            }
+        }
+        
+
 
 
     </style>
 </head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <body>
     <div class="sidebar" id="sidebar">
         <div class="toggle-btn" onclick="toggleSidebar()">☰</div>
@@ -232,6 +675,7 @@
         <a href="painel.html" class="home">
             <i class="fa-solid fa-coins"></i> <span class="text">Início</span>
         </a>
+
         <a href="reports.html">
             <i class="fa-solid fa-solar-panel"></i><span class="text">Relatórios</span>
         </a>
@@ -243,84 +687,47 @@
         </a>
     </div>
     <div class="content">
-        
         <div class="content1">
-            <h4>Selecione o mês: <select name="UC">
-                <option value="sim">Jan/2023</option>
-                <option value="nao">Fev/2023</option>   
-                <option value="sim">Abr/2023</option>
-                <option value="nao">Mai/2023</option>
-                <option value="sim">Jun/2023</option>
-
-            </select></a></h4>
-            <h2><i class="fa-regular fa-chart-bar"></i> Geração</h2>
-            <div id="economiaChart" class="chart"></div>
-            <h2><i class="fa-regular fa-chart-bar"></i> Histórico de compensação</h2>
-            <div id="economiaChart3" class="chart"></div>
-
-            <h2><i class="fa-solid fa-chart-line"></i> Dividendos</h2>
-            <div id="economiaChart4" class="chart"></div>
+            <h2>Relatórios</h2>
+            <div class="topcontent">
+                <div class="topcontent1">
+                    <div><i class="fa-solid fa-filter"></i> Filtro de pesquisa</div>
+                </div>
+                <div class="topcontent2">
+                    <div class="select-container">
+                        <input type="text" id="search" placeholder="UC" autocomplete="off">
+                        <div class="dropdown">
+                            <div class="option">
+                                <i class="fas fa-check-circle check-icon"></i>
+                                <div class="option-text">
+                                    <strong>103217568</strong>
+                                    <div class="address">R Nardina Rodrigues Johansen, 405 – TR01 AP608, CEP: 87005002, Maringa - PR</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="topcontent3">
+                </div>
+            </div>
+            <span class="card2">R Nardina Rodrigues Johansen, 405 – TR01 AP608, CEP: 87005002, Maringa - PR</span>
+            <div class="container">
+                <div class="card">
+                    <div class="icon"><i class="fa-solid fa-lock"></i></div>
+                    <div class="value">Alterar senha</div>
+                </div>
+                <div class="card">
+                    <div class="icon"><i class="fa-solid fa-star"></i></div>
+                    <div class="value">Avaliar</div>
+                </div>
+                <div class="card">
+                    <div class="icon"><i class="fa-solid fa-door-open"></i></div>
+                    <div class="value">Sair</div>
+                </div>
+            </div>         
         </div>
-        <div class="content2">
-            <h4 class="ajuda"><button><i class="fa-solid fa-circle-info"></i> Ajuda</button></h4>
-            <h2><i class="fa-solid fa-chart-line"></i> Rentabilidade</h2>
-            <div id="economiaChart2" class="chart"></div>
-            <h2>Retorno</h2>
-            <div class="card">
-                <b class="text"><i class="fa-solid fa-chart-line"></i> Payback projetado</b>
-                <p class="text">R$ 400.000,00/R$ 4.000,00 por mês, resultando em:</p>
-                <b class="text">100 meses (8,3 anos)</b>            
-            </div>
-            <div class="card">
-                <b class="text"><i class="fa-solid fa-chart-line"></i> Payback corrigido</b>
-                <p class="text">R$ 400.000,00 / R$ 5.000,00</p>
-                <b class="text">80 meses (6,6 anos)</b>            
-            </div>
 
 
-
-            <div class="card">
-            <h1 style="text-align: center;">Tabela de Rentabilidade</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Ano</th>
-                        <th>Fluxo de caixa</th>
-                        <th>Saldo</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>0</td>
-                        <td>-R$ 18.000,00</td>
-                        <td>-R$ 18.000,00</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>R$ 5.425,00</td>
-                        <td>-R$ 12.575,00</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>R$ 5.994,00</td>
-                        <td>-R$ 6.581,00</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>R$ 6.692,00</td>
-                        <td>-R$ 489,00</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>R$ 4.458,00</td>
-                        <td>R$ 3.969,00</td>
-                    </tr>
-                </tbody>
-            </table>
-            </div>
-
-        </div>
-    </div>
 
 <script>
     function toggleSidebar() {
@@ -328,120 +735,204 @@
         sidebar.classList.toggle('expanded');
     }
 
-    // Configuração do gráfico de economia
     var options = {
         chart: {
-        type: 'bar',
-        width: '80%', // Use valores em porcentagem ou pixels
-        height: 200    // Ajuste a altura do gráfico
+            type: 'line',
+            height: 350
+        },
+        series: [
+            {
+                name: 'Com a Canal Verde',
+                data: [0, 0, 0, 0, 10, 90, 120, 130, 125, 130, 120, 0]
+            },
+            {
+                name: 'Sem a Canal Verde',
+                data: [0, 0, 0, 0, 15, 100, 135, 140, 130, 135, 125, 0]
+            }
+        ],
+        xaxis: {
+            categories: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez']
+        },
+        yaxis: {
+            labels: {
+                formatter: function (value) {
+                    return 'R$ ' + value;
+                }
+            }
+        },
+        stroke: {
+            curve: 'smooth'
         },
         title: {
-            text: 'Geração'
+            text: 'Seus gastos com energia',
+            align: 'left'
+        }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#chart"), options);
+    chart.render();
+    
+    var options1 = {
+        chart: {
+            type: 'bar',
+            height: 350
+        },
+        series: [{
+            name: 'kWh Compensado',
+            data: [0, 0, 0, 0, 0, 15, 25, 5, 50, 35, 40, 0]
+        }],
+        xaxis: {
+            categories: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez']
+        },
+        colors: ['#FFEB3B'],
+        yaxis: {
+            labels: {
+                formatter: function (value) {
+                    return value + ' kWh';
+                }
+            },
+            title: {
+                text: 'kWh'
+            }
+        },
+        title: {
+            text: 'Sua energia compensada',
+            align: 'left'
+        }
+    };
+
+    var options2 = {
+        chart: {
+            type: 'bar',
+            height: 350
         },
         series: [{
             name: 'Economia',
-            data: [16967, 15824, 13825, 12714, 13977, 18178] // Exemplo de dados
+            data: [0, 0, 0, 0, 0, 1.5, 2.5, 0.5, 5, 3.5, 4, 0]
         }],
         xaxis: {
-            categories: ['Jan/2023', 'Fev/2023', 'Mar/2023', 'Abr/2023', 'Mai/2023', 'Jun/2023']
+            categories: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez']
         },
-        colors: ['#006b3c']
-    };
-
-    var chart = new ApexCharts(document.querySelector("#economiaChart"), options);
-    chart.render();
-
-    var options = {
-        chart: {
-        type: 'line',
-        width: '80%', // Use valores em porcentagem ou pixels
-        height: 200    // Ajuste a altura do gráfico
+        colors: ['#0000FF'],
+        yaxis: {
+            labels: {
+                formatter: function (value) {
+                    return 'R$ ' + value;
+                }
+            },
+            title: {
+                text: 'R$'
+            }
         },
         title: {
-            text: ''
-        },
-        series: [{
-            name: 'Rentabilidade',
-            data: [1.8, 1.7, 1.1, 1.45, 1.52, 2] // Exemplo de dados
-        },
-        {
-            name: 'Media',
-            data: [1.6, 1.6, 1.6, 1.6, 1.6, 1.6] // Exemplo de dados  
+            text: 'Sua economia',
+            align: 'left'
         }
-        ],
-        xaxis: {
-            categories: ['Jan/2023', 'Fev/2023', 'Mar/2023', 'Abr/2023', 'Mai/2023']
-        },
-        colors: ['#006b3c', '#FF5733']
     };
 
-    var chart = new ApexCharts(document.querySelector("#economiaChart2"), options);
-    chart.render();
+    var chart1 = new ApexCharts(document.querySelector("#chart1"), options1);
+    var chart2 = new ApexCharts(document.querySelector("#chart2"), options2);
+
+    chart1.render();
+    chart2.render();
     
-    var options = {
-        chart: {
-        type: 'bar',
-        width: '80%', // Use valores em porcentagem ou pixels
-        height: 200    // Ajuste a altura do gráfico
-        },
-        title: {
-            text: ''
-        },
-        series: [{
-            name: 'Energia injetada',
-            data: [16390, 12661, 12071, 9000, 14250, 14648] // Exemplo de dados
-        },
-        {
-            name: 'Saldo',
-            data: [1889, 1126, 4407, 107, 844, 1360] // Exemplo de dados 
-        }],
-        xaxis: {
-            categories: ['Jan/2023', 'Fev/2023', 'Mar/2023', 'Abr/2023', 'Mai/2023', 'Jun/2023']
-        },
-        colors: ['#006b3c', '#FF5733']
-    };
-
-    var chart = new ApexCharts(document.querySelector("#economiaChart3"), options);
-    chart.render();
-    var options = {
-        chart: {
-        type: 'bar',
-        width: '80%', // Use valores em porcentagem ou pixels
-        height: 200    // Ajuste a altura do gráfico
-        },
-        title: {
-            text: ''
-        },
-        series: [{
-            name: 'Energia injetada',
-            data: [6234.19, 6064.80, 3830.40, 5137.43, 5388.52, 6975.58] // Exemplo de dados
-        }],
-        xaxis: {
-        categories: ['Jan/2023', 'Fev/2023', 'Mar/2023', 'Abr/2023', 'Mai/2023', 'Jun/2023']
-    },
 
 
+    // Configuração do gráfico de economia
 
-    yaxis: {
-        labels: {
-            formatter: function (value) {
-                return 'R$ ' + value.toFixed(2); // Exibe o valor com duas casas decimais
-            }
+        document.getElementById('search').addEventListener('focus', function() {
+        document.querySelector('.dropdown').style.display = 'block';
+    });
+
+    document.getElementById('search').addEventListener('blur', function() {
+        setTimeout(() => {
+            document.querySelector('.dropdown').style.display = 'none';
+        }, 100);
+    });
+
+    document.querySelectorAll('.option').forEach(option => {
+        option.addEventListener('click', function() {
+            document.getElementById('search').value = option.querySelector('strong').textContent.trim();
+            document.querySelector('.dropdown').style.display = 'none';
+        });
+        });
+        function openPopup() {
+            document.getElementById('popup').style.display = 'flex';
         }
-    },
-    tooltip: {
-        y: {
-            formatter: function (value) {
-                return 'R$ ' + value.toFixed(2); // Exibe o valor no tooltip com prefixo
-            }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
         }
-    },
-    colors: ['#006b3c']   
-    };
+        function toggleDetails(card) {
+        const content = card.nextElementSibling;
+        if (content.style.display === "block") {
+            content.style.display = "none";
+        } else {
+            content.style.display = "block";
+        }
+    }
 
-    var chart = new ApexCharts(document.querySelector("#economiaChart4"), options);
-    chart.render();
+    function loadMoreCards() {
+        const container = document.getElementById('cards-container');
+        // Exemplo de card adicional
+        const newCard = document.createElement('div');
+        newCard.innerHTML = `
+            <div class="card" onclick="toggleDetails(this)">
+                <div class="card-header">
+                    JUL/24 Canal Verde
+                    <div class="status">
+                        <div class="status-indicator liquidated"></div>
+                        Liquidado
+                    </div>
+                </div>
+                <div>Total: R$ 147,32 <i class="fas fa-chevron-down"></i></div>
+            </div>
+            <div class="card-content">
+                <p>Detalhes do cartão JUL/24...</p>
+                <a href="jul_24.pdf" ><i class="fa-regular fa-file-pdf"></i> Ver PDF</a>
+            </div>
+        `;
+        container.appendChild(newCard);
+    }
+    document.getElementById('dateButton').addEventListener('click', function() {
+    const dropdown2 = document.getElementById('dropdown2');
+    dropdown2.style.display = (dropdown2.style.display === 'block') ? 'none' : 'block';
+});
 
+    document.querySelectorAll('.months div').forEach(month => {
+        month.addEventListener('click', function() {
+            document.getElementById('selectedMonth').removeAttribute('id');
+            this.id = 'selectedMonth';
+            updateButton();
+            toggleDropdown2();
+        });
+    });
+
+    document.getElementById('prevYear').addEventListener('click', function() {
+        changeYear(-1);
+    });
+
+    document.getElementById('nextYear').addEventListener('click', function() {
+        changeYear(1);
+    });
+
+    function toggleDropdown2() {
+        const dropdown2 = document.getElementById('dropdown2');
+        dropdown2.style.display = 'none';
+    }
+
+    function changeYear(offset) {
+        const yearElement = document.getElementById('year');
+        const currentYear = parseInt(yearElement.textContent);
+        yearElement.textContent = currentYear + offset;
+        updateButton();
+    }
+
+    function updateButton() {
+        const selectedMonth = document.getElementById('selectedMonth').textContent;
+        const year = document.getElementById('year').textContent;
+        document.getElementById('dateButton').textContent = selectedMonth + '/' + year;
+    }
 
     
     

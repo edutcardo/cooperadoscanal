@@ -14,7 +14,7 @@
             margin: 0;
             font-family: Arial, sans-serif;
             display: flex;
-            padding-top: 45px; /* Garante espaço abaixo da topbar */
+            overflow-x: hidden; /* Prevenir overflow horizontal */
         }
         a,p {
             font-family: Epilogue !important;
@@ -29,31 +29,37 @@
             height: 100vh; /* Altura total da tela */
             top: 0; /* Começa do topo */
             left: 0; /* Fixa na lateral esquerda */
+            font-family: 'Epilogue', sans-serif !important; /* Certifique-se de usar a fonte Epilogue */
+            font-weight: 400; /* Define o peso da fonte para normal */
         }
+        
 
         .sidebar:hover {
             width: 200px;
 
         }
         .sidebar a {
-            display: flex; /* Ativa o layout flexível */
-            align-items: center; /* Centraliza verticalmente o conteúdo */
-            justify-content: flex-start; /* Centraliza horizontalmente (altere para `center` se necessário) */
-            padding: 10px; /* Ajusta o espaçamento interno */
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 10px;
             color: #333;
             text-decoration: none;
             position: relative;
             z-index: 2;
-            gap: 10px; /* Espaço entre ícone e texto */
+            gap: 10px;
             margin-left: 8px;
             margin-top: 24px;
+            font-family: 'Epilogue', sans-serif !important; /* Certifique-se de usar a fonte Epilogue */
+            font-weight: 400; /* Define o peso da fonte para normal */
         }
         .sidebar a:hover {
             background-color: #ddd;
         }
         .sidebar a .text {
-            display: none; /* Oculta o texto por padrão */
-            margin-left: 10px; /* Adiciona espaçamento entre ícone e texto */
+            display: none;
+            margin-left: 10px;
+            font-weight: 400; /* Também aplica peso normal ao texto */
         }
         .sidebar:hover a .text {
             display: inline-block; /* Exibe o texto quando a barra está em hover */ 
@@ -102,30 +108,15 @@
             display: flex;
         }
         .content1 {
-            width: 60%;
+            width: 100%;
         }
-        .content2 {
-            width: 40%;
-            padding-left: 16px;
-            align-items: right;
-        }
+
         .card {
             background-color: #fff;
             border-radius: 5px;
             padding: 20px;
             margin-bottom: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-
-
-        }
-        .chart {
-            height: 300px;
-            background-color: #f8f8f8;
-            border-radius: 5px;
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
         .logo {
             width: 40px; /* Define o tamanho inicial da logo */
@@ -140,34 +131,6 @@
             width: 80px; /* Tamanho maior quando expandido */
             height: 80px;
             padding: 8px;
-        }
-
-        .topbar {
-            width: calc(100% - 60px); /* Largura inicial, descontando a largura inicial da sidebar */
-            height: 45px;
-            background-color: #F5F5F5;
-            color: rgb(64, 64, 64);
-            justify-content: space-between;
-            padding: 10px 20px;
-            position: fixed;
-            top: 0;
-            z-index: 3; /* Garante que esteja acima da sidebar */
-            margin-left: 60px; /* Inicialmente alinhado com a sidebar retraída */
-            display: flex;
-            align-items: center;
-            transition: margin-left 0.3s ease, width 0.3s ease; /* Transições suaves */
-            font-weight: bold; /* Negrito */
-
-        }
-        .topbar a {
-            color: rgb(64, 64, 64);
-            padding: 15px 0px;
-            text-decoration: none;
-            text-align: center;
-            font-weight: bold; /* Negrito */
-            font-size: 13px;
-            margin-right: 40px;
-            
         }
         
 
@@ -197,32 +160,470 @@
         .formcrud{
             margin-top: 30px;
         }
-        table {
-            width: 80%;
-            margin: 20px auto;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: center;
-        }
-        th {
-            background-color: #f4f4f4;
-            font-weight: bold;
-        }
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-        tr:hover {
-            background-color: #f1f1f1;
+
+        .select-container {
+            position: relative;
+            width: 350px;
+            margin: 0px;
+            
         }
 
+        #search {
+            width: 30%;
+            padding: 10px 40px 10px 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        .search-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #888;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 45px;
+            width: 100%;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: none;
+        }
+
+        .option {
+            padding: 10px;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .option:last-child {
+            border-bottom: none;
+        }
+
+        .option:hover, .option.selected {
+            background-color: #f0f0f0;
+        }
+
+        .check-icon {
+            color: blue;
+            margin-right: 10px;
+            margin-top: 5px;
+            flex-shrink: 0;
+        }
+        .option-text {
+            display: flex;
+            flex-direction: column;
+        }
+        .address {
+            font-size: 0.9em;
+            color: #555;
+        }
+        .spam-container {
+            background-color: #f9f9f9;
+            padding: 10px 15px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-family: Arial, sans-serif;
+            margin-top: 30px;
+        }   
+        .numero {
+            font-weight: bold;
+            color: blue;
+            margin-right: 10px;
+        }
+
+        .endereco {
+            font-size: 0.9em;
+            color: #333;
+            margin-right: auto;
+        }
+
+        .status {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .status-indicador {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: yellow;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+        .topcontent{
+            display: flex;
+            align-items: center;
+        }
+        .topcontent1{
+            width: 10%;
+        }
+        .topcontent2{
+            width: 10%;
+        }
+        .topcontent3{
+            width: 10%;
+        }
+        .alert-container {
+            border: 1px solid #cce5ff;
+            background-color: #e9f4ff;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: fit-content;
+            display: flex;
+            align-items: center;
+            margin: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        .alert-container i {
+            color: #007bff;
+            margin-right: 10px;
+        }
+
+        .alert-container strong {
+            color: #007bff;
+            margin-right: 5px;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999; /* Certifique-se de que este valor é maior do que outros elementos */
+        }
+
+        .popup-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            position: relative;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .close {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            color: #aaa;
+        }
+        .close:hover {
+            color: #000;
+        }
+        .economia-container {
+            display: block;
+            font-family: 'Inter', sans-serif;
+            color: #333;
+            text-align: right;
+        }
+        .icon {
+            font-size: 24px;
+            color: blue;
+            margin-right: 10px;
+        }
+
+        .text p {
+            margin: 0;
+            line-height: 1.2;
+            text-align: right;
+        }
+
+        .valor {
+            font-size: 1.5em;
+            color: blue;
+            font-weight: bold;
+        }
+
+        .periodo {
+            font-size: 0.9em;
+            color: #aaa;
+        }
+        .card {
+            background-color: #e0ffe0; /* Verde pastel */
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .card2 {
+            padding-top: 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+
+        }
+        .card:hover {
+            background-color: #b3e6b3; /* Verde suave no hover */
+        }
+        .card-content {
+            display: none;
+            padding: 10px;
+            background-color: #d9f2d9; /* Verde suave */
+            border-radius: 8px;
+            margin-top: 10px;
+            text-align: right;
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            background-color: #ccf2cc; /* Verde suave */
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .status {
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+        }
+        .status-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+        .registered {
+            background-color: #008000; /* Verde para registrado */
+        }
+
+        .liquidated {
+            background-color: #32cd32; /* Verde limão para liquidado */
+        }
+        .more-cards {
+            text-align: center;
+            cursor: pointer;
+            padding: 10px;
+            background-color: #e0ffe0; /* Verde pastel suave */
+            border-radius: 10px;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        .more-cards:hover {
+            background-color: #ccffcc; /* Verde mais intenso no hover */
+        }
+        .card-container {
+            background-color: #e6ffe6; /* Verde claro */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-top: 16px;
+        }
+        .date-picker {
+            position: relative;
+            display: inline-block;
+        }
+        #dateButton {
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 8px;
+            padding: 10px 40px 10px 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            background-color: #fff;
+
+        }
+        .dropdown2 {
+            display: none;
+            position: absolute;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 5px;
+            padding: 10px;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .year-selector {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 10px;
+        }
+
+        .months {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+        }
+
+        .months div {
+            padding: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #selectedMonth {
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .months div:hover {
+            background-color: #f0f0f0;
+        }
+
+        .year-selector span {
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .container {
+            padding-top: 10px;
+            display: flex;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+        .date {
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        .discount {
+            background-color: blue;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-right: 8px;
+        }
+        .flag {
+            margin-right: 4px;
+            color: red;
+        }
+        .preco {
+            color: blue;
+            font-size: 24px; /* Ajuste o tamanho conforme necessário */
+        }
+        .box-container {
+            display: flex;
+            gap: 20px;
+        }
+        .box {
+            background-color: white;
+            padding: 20px;
+            padding-bottom: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            width: 150px;
+        }
+        .box span {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .underline {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            height: 4px;
+            border-radius: 2px;
+        }
+        .blue-underline {
+            background-color: blue;
+        }
+        .orange-underline {
+            background-color: orange;
+        }
+        .sign {
+            align-self: center;
+            font-size: 24px;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            padding: 10px 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-family: Arial, sans-serif;
+            width: 15%;
+            margin-top: 16px;
+        }
+        .icon {
+            color: blue;
+            font-size: 24px;
+            margin-right: 8px;
+        }
+        .text {
+            color: blue;
+            font-weight: bold;
+            margin-right: 4px;
+        }
+        .value {
+            color: gray;
+        }
+        .item {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            background-color: #e0e7e7;
+            padding: 20px;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            justify-content: center;
+            flex-direction: column;
+            margin-right: 7%;
+        }
+        .icon {
+            font-size: 24px;
+            color: #657a7a;
+            margin-bottom: 10px;
+        }
+        .text {
+            font-size: 14px;
+            color: #657a7a;
+        }
+        .value {
+            font-weight: bold;
+            color: black;
+            margin-bottom: 4px;
+        }
+        .menuinferior{
+            display: flex;
+            padding-top: 24px;
+        }
 
     </style>
 </head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <body>
     <div class="sidebar" id="sidebar">
         <div class="toggle-btn" onclick="toggleSidebar()">☰</div>
@@ -232,6 +633,7 @@
         <a href="painel.html" class="home">
             <i class="fa-solid fa-coins"></i> <span class="text">Início</span>
         </a>
+
         <a href="reports.html">
             <i class="fa-solid fa-solar-panel"></i><span class="text">Relatórios</span>
         </a>
@@ -243,84 +645,98 @@
         </a>
     </div>
     <div class="content">
-        
         <div class="content1">
-            <h4>Selecione o mês: <select name="UC">
-                <option value="sim">Jan/2023</option>
-                <option value="nao">Fev/2023</option>   
-                <option value="sim">Abr/2023</option>
-                <option value="nao">Mai/2023</option>
-                <option value="sim">Jun/2023</option>
-
-            </select></a></h4>
-            <h2><i class="fa-regular fa-chart-bar"></i> Geração</h2>
-            <div id="economiaChart" class="chart"></div>
-            <h2><i class="fa-regular fa-chart-bar"></i> Histórico de compensação</h2>
-            <div id="economiaChart3" class="chart"></div>
-
-            <h2><i class="fa-solid fa-chart-line"></i> Dividendos</h2>
-            <div id="economiaChart4" class="chart"></div>
+            <h2>Relatórios</h2>
+            <div class="topcontent">
+                <div class="topcontent1">
+                    <div><i class="fa-solid fa-filter"></i> Filtro de pesquisa</div>
+                </div>
+                <div class="topcontent2">
+                    <div class="select-container">
+                        <input type="text" id="search" placeholder="UC" autocomplete="off">
+                        <div class="dropdown">
+                            <div class="option">
+                                <i class="fas fa-check-circle check-icon"></i>
+                                <div class="option-text">
+                                    <strong>103217568</strong>
+                                    <div class="address">R Nardina Rodrigues Johansen, 405 – TR01 AP608, CEP: 87005002, Maringa - PR</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="topcontent3">
+                    <div class="date-picker">
+                        <button id="dateButton">Data</button>
+                        <div class="dropdown2" id="dropdown2">
+                            <div class="year-selector">
+                                <span id="prevYear">&lt;</span>
+                                <span id="year">2024</span>
+                                <span id="nextYear">&gt;</span>
+                            </div>
+                            <div class="months">
+                                <div>jan</div><div>fev</div><div>mar</div>
+                                <div>abr</div><div>mai</div><div>jun</div>
+                                <div>jul</div><div>ago</div><div>set</div>
+                                <div>out</div><div>nov</div><div id="selectedMonth">dez</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <span class="card2">R Nardina Rodrigues Johansen, 405 – TR01 AP608, CEP: 87005002, Maringa - PR</span>
+            <div class="container">
+                <div class="date">DEZ/24</div>
+                <div class="discount">0% off</div>
+                <div class="flag">🚩</div>
+                <div>Vermelha P1</div>
+            </div>
+            <div><s style="color: gray;"><h3>De R$ 0,00</h3></s></div>
+            <div><span class="preco"><h3>Por R$ 0,00</h3></span></div>
+            <div class="box-container">
+                <div class="box">
+                    <span>R$ 0,00</span>
+                    <span>Conta PLIN</span>
+                    <div class="underline blue-underline"></div>
+                </div>
+                <div class="sign">+</div>
+                <div class="box">
+                    <span>R$ 0,00</span>
+                    <span>Fatura COPEL</span>
+                    <div class="underline orange-underline"></div>
+                </div>
+                <div class="sign">=</div>
+                <div class="box">
+                    <span>R$ 0,00</span>
+                    <span>Total com desconto PLIN</span>
+                    <div class="underline blue-underline"></div>
+                </div>
+            </div>
+            <div class="container">
+                <span class="icon">⚡</span>
+                <span class="text">Energia consumida</span>
+                <span class="value">0 kWh</span>
+            </div>
+            <div class="menuinferior">
+            <div class="item">
+                <div class="icon">⚡</div>
+                <div class="value">0 kg</div>
+                <div class="text">de CO2 que são deixados de emitir na atmosfera</div>
+            </div>
+            <div class="item">
+                <div class="icon">♻️</div>
+                <div class="value">0 kWh</div>
+                <div class="text">total de energia limpa consumida durante o mês</div>
+            </div>
+            <div class="item">
+                <div class="icon">🌱</div>
+                <div class="value">0 árvores</div>
+                <div class="text">compensadas neste mês consumindo energia limpa</div>
+            </div>
         </div>
-        <div class="content2">
-            <h4 class="ajuda"><button><i class="fa-solid fa-circle-info"></i> Ajuda</button></h4>
-            <h2><i class="fa-solid fa-chart-line"></i> Rentabilidade</h2>
-            <div id="economiaChart2" class="chart"></div>
-            <h2>Retorno</h2>
-            <div class="card">
-                <b class="text"><i class="fa-solid fa-chart-line"></i> Payback projetado</b>
-                <p class="text">R$ 400.000,00/R$ 4.000,00 por mês, resultando em:</p>
-                <b class="text">100 meses (8,3 anos)</b>            
-            </div>
-            <div class="card">
-                <b class="text"><i class="fa-solid fa-chart-line"></i> Payback corrigido</b>
-                <p class="text">R$ 400.000,00 / R$ 5.000,00</p>
-                <b class="text">80 meses (6,6 anos)</b>            
-            </div>
-
-
-
-            <div class="card">
-            <h1 style="text-align: center;">Tabela de Rentabilidade</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Ano</th>
-                        <th>Fluxo de caixa</th>
-                        <th>Saldo</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>0</td>
-                        <td>-R$ 18.000,00</td>
-                        <td>-R$ 18.000,00</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>R$ 5.425,00</td>
-                        <td>-R$ 12.575,00</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>R$ 5.994,00</td>
-                        <td>-R$ 6.581,00</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>R$ 6.692,00</td>
-                        <td>-R$ 489,00</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>R$ 4.458,00</td>
-                        <td>R$ 3.969,00</td>
-                    </tr>
-                </tbody>
-            </table>
-            </div>
-
         </div>
-    </div>
+
+
 
 <script>
     function toggleSidebar() {
@@ -442,6 +858,99 @@
     var chart = new ApexCharts(document.querySelector("#economiaChart4"), options);
     chart.render();
 
+        document.getElementById('search').addEventListener('focus', function() {
+        document.querySelector('.dropdown').style.display = 'block';
+    });
+
+    document.getElementById('search').addEventListener('blur', function() {
+        setTimeout(() => {
+            document.querySelector('.dropdown').style.display = 'none';
+        }, 100);
+    });
+
+    document.querySelectorAll('.option').forEach(option => {
+        option.addEventListener('click', function() {
+            document.getElementById('search').value = option.querySelector('strong').textContent.trim();
+            document.querySelector('.dropdown').style.display = 'none';
+        });
+        });
+        function openPopup() {
+            document.getElementById('popup').style.display = 'flex';
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+        function toggleDetails(card) {
+        const content = card.nextElementSibling;
+        if (content.style.display === "block") {
+            content.style.display = "none";
+        } else {
+            content.style.display = "block";
+        }
+    }
+
+    function loadMoreCards() {
+        const container = document.getElementById('cards-container');
+        // Exemplo de card adicional
+        const newCard = document.createElement('div');
+        newCard.innerHTML = `
+            <div class="card" onclick="toggleDetails(this)">
+                <div class="card-header">
+                    JUL/24 Canal Verde
+                    <div class="status">
+                        <div class="status-indicator liquidated"></div>
+                        Liquidado
+                    </div>
+                </div>
+                <div>Total: R$ 147,32 <i class="fas fa-chevron-down"></i></div>
+            </div>
+            <div class="card-content">
+                <p>Detalhes do cartão JUL/24...</p>
+                <a href="jul_24.pdf" ><i class="fa-regular fa-file-pdf"></i> Ver PDF</a>
+            </div>
+        `;
+        container.appendChild(newCard);
+    }
+    document.getElementById('dateButton').addEventListener('click', function() {
+    const dropdown2 = document.getElementById('dropdown2');
+    dropdown2.style.display = (dropdown2.style.display === 'block') ? 'none' : 'block';
+});
+
+    document.querySelectorAll('.months div').forEach(month => {
+        month.addEventListener('click', function() {
+            document.getElementById('selectedMonth').removeAttribute('id');
+            this.id = 'selectedMonth';
+            updateButton();
+            toggleDropdown2();
+        });
+    });
+
+    document.getElementById('prevYear').addEventListener('click', function() {
+        changeYear(-1);
+    });
+
+    document.getElementById('nextYear').addEventListener('click', function() {
+        changeYear(1);
+    });
+
+    function toggleDropdown2() {
+        const dropdown2 = document.getElementById('dropdown2');
+        dropdown2.style.display = 'none';
+    }
+
+    function changeYear(offset) {
+        const yearElement = document.getElementById('year');
+        const currentYear = parseInt(yearElement.textContent);
+        yearElement.textContent = currentYear + offset;
+        updateButton();
+    }
+
+    function updateButton() {
+        const selectedMonth = document.getElementById('selectedMonth').textContent;
+        const year = document.getElementById('year').textContent;
+        document.getElementById('dateButton').textContent = selectedMonth + '/' + year;
+    }
 
     
     
