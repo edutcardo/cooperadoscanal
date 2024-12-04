@@ -638,26 +638,68 @@
             height: 100px; /* Altura fixa para consistência */
         }
         @media (max-width: 768px) {
-            .sidebar {
-                width: 60px;
-            }
+        .sidebar {
+            width: 60px; /* Manterá a largura mínima em dispositivos móveis */
+            position: relative;
+        }
 
-            .sidebar:hover {
-                width: 150px; /* Ajuste conforme necessário */
-            }
+        .content {
+            margin-left: 0; /* Removerá a margem para ocupar toda a largura disponível */
+            padding: 10px; /* Ajusta o padding para dispositivos menores */
+        }
 
-            .content {
-                margin-left: 60px; /* Ajuste conforme necessário */
-            }
+        .topbar {
+            width: 100%; /* Ocupa toda a largura disponível */
+            margin-left: 0; /* Elimina a margem lateral */
+        }
 
-            .sidebar:hover ~ .content {
-                margin-left: 150px; /* Ajuste conforme necessário */
-            }
+        .card {
+            flex-direction: column; /* Ajusta o layout dos cards para colunas */
+            align-items: flex-start; /* Alinha o conteúdo à esquerda */
+        }
+
+        .sidebar:hover {
+            width: 150px; /* Ajusta a largura ao passar o mouse em dispositivos móveis */
+        }
+
+        .sidebar a .text {
+            display: none !important; /* Garante que o texto permaneça oculto em dispositivos menores */
+        }
+
+        .topcontent {
+            flex-direction: column; /* Ajusta a direção do conteúdo para colunas */
+            align-items: flex-start; /* Alinha o conteúdo à esquerda */
         }
         
+        /* Ajustes para o conteúdo do card */
+        .card-content {
+            padding: 10px;
+        }
+        
+        .more-cards {
+            width: 100%; /* Ocupa toda a largura disponível */
+        }
+    }
 
+    @media (max-width: 480px) {
+        .sidebar {
+            width: 50px; /* Ajusta uma largura ainda menor para telas bem pequenas */
+        }
 
+        .content {
+            padding: 5px; /* Reduz ainda mais o padding para telas pequenas */
+        }
 
+        .card {
+            padding: 10px; /* Ajusta o padding dos cards */
+        }
+
+        .topbar {
+            padding: 5px; /* Ajusta o padding da barra superior */
+            font-size: 12px; /* Reduz o tamanho da fonte para caber melhor */
+        }
+    }
+        
     </style>
 </head>
 <meta charset="UTF-8">

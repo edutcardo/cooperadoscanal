@@ -454,6 +454,7 @@
             background-color: #e0ffe0; /* Verde suave */
             padding: 10px;
             border-radius: 5px;
+            transition: background-color 0.3s ease; /* Transição suave */
         }
         .card:hover .card-header {
             background-color: #9fe29f; /* Mesma cor do card no hover */
@@ -499,6 +500,68 @@
             gap: 30px;
             border: 1px solid #56dd66;
         }
+        @media (max-width: 768px) {
+        .sidebar {
+            width: 60px; /* Manterá a largura mínima em dispositivos móveis */
+            position: relative;
+        }
+
+        .content {
+            margin-left: 0; /* Removerá a margem para ocupar toda a largura disponível */
+            padding: 10px; /* Ajusta o padding para dispositivos menores */
+        }
+
+        .topbar {
+            width: 100%; /* Ocupa toda a largura disponível */
+            margin-left: 0; /* Elimina a margem lateral */
+        }
+
+        .card {
+            flex-direction: column; /* Ajusta o layout dos cards para colunas */
+            align-items: flex-start; /* Alinha o conteúdo à esquerda */
+        }
+
+        .sidebar:hover {
+            width: 150px; /* Ajusta a largura ao passar o mouse em dispositivos móveis */
+        }
+
+        .sidebar a .text {
+            display: none !important; /* Garante que o texto permaneça oculto em dispositivos menores */
+        }
+
+        .topcontent {
+            flex-direction: column; /* Ajusta a direção do conteúdo para colunas */
+            align-items: flex-start; /* Alinha o conteúdo à esquerda */
+        }
+        
+        /* Ajustes para o conteúdo do card */
+        .card-content {
+            padding: 10px;
+        }
+        
+        .more-cards {
+            width: 100%; /* Ocupa toda a largura disponível */
+        }
+    }
+
+    @media (max-width: 480px) {
+        .sidebar {
+            width: 50px; /* Ajusta uma largura ainda menor para telas bem pequenas */
+        }
+
+        .content {
+            padding: 5px; /* Reduz ainda mais o padding para telas pequenas */
+        }
+
+        .card {
+            padding: 10px; /* Ajusta o padding dos cards */
+        }
+
+        .topbar {
+            padding: 5px; /* Ajusta o padding da barra superior */
+            font-size: 12px; /* Reduz o tamanho da fonte para caber melhor */
+        }
+    }
 
     </style>
 </head>

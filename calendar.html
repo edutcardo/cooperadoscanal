@@ -777,7 +777,9 @@
         title: {
             text: 'Seus gastos com energia',
             align: 'left'
-        }
+        },
+        colors: ['#018538','#dd345f'],
+
     };
 
     var chart = new ApexCharts(document.querySelector("#chart"), options);
@@ -795,7 +797,7 @@
         xaxis: {
             categories: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez']
         },
-        colors: ['#FFEB3B'],
+        colors: ['#dd345f'],
         yaxis: {
             labels: {
                 formatter: function (value) {
@@ -824,7 +826,7 @@
         xaxis: {
             categories: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez']
         },
-        colors: ['#0000FF'],
+        colors: ['#018538'],
         yaxis: {
             labels: {
                 formatter: function (value) {

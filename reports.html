@@ -12,13 +12,14 @@
     <style>
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: Epilogue !important;
             display: flex;
-            overflow-x: hidden; /* Prevenir overflow horizontal */
+            padding-top: 45px; /* Garante espaço abaixo da topbar */
         }
         a,p {
             font-family: Epilogue !important;
         }
+        
         .sidebar {
             width: 60px;
             background-color: 0 solid #e5e7eb;
@@ -29,40 +30,39 @@
             height: 100vh; /* Altura total da tela */
             top: 0; /* Começa do topo */
             left: 0; /* Fixa na lateral esquerda */
-            font-family: 'Epilogue', sans-serif;
-            font-weight: 400;
+            font-family: Epilogue !important;
         }
+
         .sidebar:hover {
             width: 200px;
 
         }
         .sidebar a {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            padding: 10px;
+            display: flex; /* Ativa o layout flexível */
+            align-items: center; /* Centraliza verticalmente o conteúdo */
+            justify-content: flex-start; /* Centraliza horizontalmente (altere para `center` se necessário) */
+            padding: 10px; /* Ajusta o espaçamento interno */
             color: #333;
             text-decoration: none;
             position: relative;
             z-index: 2;
-            gap: 10px;
+            gap: 10px; /* Espaço entre ícone e texto */
             margin-left: 8px;
             margin-top: 24px;
-            font-family: 'Epilogue', sans-serif !important; /* Certifique-se de usar a fonte Epilogue */
-            font-weight: 400; /* Define o peso da fonte para normal */
+            font-family: Epilogue !important;
         }
         .sidebar a:hover {
             background-color: #ddd;
         }
         .sidebar a .text {
-            display: none;
-            margin-left: 10px;
-            font-weight: 400; /* Também aplica peso normal ao texto */
-            font-family: 'Epilogue', sans-serif !important; /* Certifique-se de usar a fonte Epilogue */
+            display: none; /* Oculta o texto por padrão */
+            margin-left: 10px; /* Adiciona espaçamento entre ícone e texto */
+            font-family: Epilogue !important;
         }
         .sidebar:hover a .text {
             display: inline-block; /* Exibe o texto quando a barra está em hover */ 
             color: #000000; /* Cor branca */
+            font-family: Epilogue !important;
         }
         .sidebar:hover .span {
             text-decoration: none;
@@ -117,6 +117,15 @@
             margin-bottom: 40px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+        .chart {
+            height: 300px;
+            background-color: #f8f8f8;
+            border-radius: 5px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
         .logo {
             width: 40px; /* Define o tamanho inicial da logo */
             height: 40px; /* Ajuste as dimensões conforme necessário */
@@ -130,6 +139,34 @@
             width: 80px; /* Tamanho maior quando expandido */
             height: 80px;
             padding: 8px;
+        }
+
+        .topbar {
+            width: calc(100% - 60px); /* Largura inicial, descontando a largura inicial da sidebar */
+            height: 45px;
+            background-color: #F5F5F5;
+            color: rgb(64, 64, 64);
+            justify-content: space-between;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            z-index: 3; /* Garante que esteja acima da sidebar */
+            margin-left: 60px; /* Inicialmente alinhado com a sidebar retraída */
+            display: flex;
+            align-items: center;
+            transition: margin-left 0.3s ease, width 0.3s ease; /* Transições suaves */
+            font-weight: bold; /* Negrito */
+
+        }
+        .topbar a {
+            color: rgb(64, 64, 64);
+            padding: 15px 0px;
+            text-decoration: none;
+            text-align: center;
+            font-weight: bold; /* Negrito */
+            font-size: 13px;
+            margin-right: 40px;
+            
         }
         
 
@@ -615,6 +652,69 @@
             display: flex;
             padding-top: 24px;
         }
+        
+        @media (max-width: 768px) {
+        .sidebar {
+            width: 60px; /* Manterá a largura mínima em dispositivos móveis */
+            position: relative;
+        }
+
+        .content {
+            margin-left: 0; /* Removerá a margem para ocupar toda a largura disponível */
+            padding: 10px; /* Ajusta o padding para dispositivos menores */
+        }
+
+        .topbar {
+            width: 100%; /* Ocupa toda a largura disponível */
+            margin-left: 0; /* Elimina a margem lateral */
+        }
+
+        .card {
+            flex-direction: column; /* Ajusta o layout dos cards para colunas */
+            align-items: flex-start; /* Alinha o conteúdo à esquerda */
+        }
+
+        .sidebar:hover {
+            width: 150px; /* Ajusta a largura ao passar o mouse em dispositivos móveis */
+        }
+
+        .sidebar a .text {
+            display: none !important; /* Garante que o texto permaneça oculto em dispositivos menores */
+        }
+
+        .topcontent {
+            flex-direction: column; /* Ajusta a direção do conteúdo para colunas */
+            align-items: flex-start; /* Alinha o conteúdo à esquerda */
+        }
+        
+        /* Ajustes para o conteúdo do card */
+        .card-content {
+            padding: 10px;
+        }
+        
+        .more-cards {
+            width: 100%; /* Ocupa toda a largura disponível */
+        }
+    }
+
+    @media (max-width: 480px) {
+        .sidebar {
+            width: 50px; /* Ajusta uma largura ainda menor para telas bem pequenas */
+        }
+
+        .content {
+            padding: 5px; /* Reduz ainda mais o padding para telas pequenas */
+        }
+
+        .card {
+            padding: 10px; /* Ajusta o padding dos cards */
+        }
+
+        .topbar {
+            padding: 5px; /* Ajusta o padding da barra superior */
+            font-size: 12px; /* Reduz o tamanho da fonte para caber melhor */
+        }
+    }
 
     </style>
 </head>
